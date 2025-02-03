@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local AI Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- Marked.js for Markdown support -->
+</head>
+<body>
+
+    <div class="chat-container">
+        <h2>Chat with Local LLM</h2>
+
+        <div class="messages" id="messages"></div>
+
+        <div class="input-container">
+            <select id="model">
+                <option value="deepseek-r1:1.5b">deepseek-r1:1.5b</option>
+                <option value="deepseek-r1:7b">deepseek-r1:7b</option>
+                <option value="deepseek-r1:8b">deepseek-r1:8b</option>
+                <option value="deepseek-r1:14b">deepseek-r1:14b</option>
+                <option value="deepseek-r1:32b">deepseek-r1:32b</option>
+            </select>
+
+            <textarea id="prompt" placeholder="Type your message..."></textarea>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
