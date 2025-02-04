@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='image_script.js') }}" defer></script>
+</head>
+<body>
+
+    <div class="image-container">
+        <h2>Generate AI Images</h2>
+
+        <textarea id="image_prompt" placeholder="Describe the image you want to generate..."></textarea>
+        <button onclick="generateImage()">Generate Image</button>
+
+        <div id="loading" style="display: none;">Generating... Please wait.</div>
+        <div id="image-result">
+            <img id="generated-image" src="" alt="Generated Image" style="display: none;">
+        </div>
+    </div>
+
+</body>
+</html>

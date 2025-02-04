@@ -1,15 +1,18 @@
 from flask import Flask, render_template, request, jsonify
-from flask_cors import CORS
 import requests
+from image_gen import generate_image
 
-app = Flask(__name__, static_folder="static", template_folder="templates")
-CORS(app)
+app = Flask(__name__)
 
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
 
-@app.route("/")
+@app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template('index.html')
+
+@app.route('/image')
+def image_page():
+    return render_template('image.html')
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -38,5 +41,16 @@ def chat():
         print("Error:", e)
         return jsonify({"error": str(e)}), 500
 
+@app.route('/generate_image', methods=['POST'])
+def generate():
+    data = request.get_json()
+    prompt = data.get("prompt", "")
+
+    if not prompt:
+        return jsonify({"error": "Empty prompt"}), 400
+
+    image_url = generate_image(prompt)
+    return jsonify({"image_url": image_url})
+
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5555, debug=True)
+    app.run(host='0.0.0.0', port=5555, debug=True)

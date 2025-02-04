@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local AI Chat</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- Marked.js for Markdown support -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- Markdown Support -->
 </head>
 <body>
+
+    <nav>
+        <a href="/">Chat</a>
+        <a href="/image">Image Generator</a>
+    </nav>
 
     <div class="chat-container">
         <h2>Chat with Local LLM</h2>
